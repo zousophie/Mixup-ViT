@@ -1,18 +1,7 @@
-*Note*: Mixer code is currently available in the
-[linen branch](https://github.com/google-research/vision_transformer/tree/linen),
-which will be merged soon.
-
-# Vision Transformer
-by Alexey Dosovitskiy\*†, Lucas Beyer\*, Alexander Kolesnikov\*, Dirk
-Weissenborn\*, Xiaohua Zhai\*, Thomas Unterthiner, Mostafa Dehghani, Matthias
-Minderer, Georg Heigold, Sylvain Gelly, Jakob Uszkoreit and Neil Houlsby\*†.
-
-(\*) equal technical contribution, (†) equal advising.
-
-Open source release prepared by Andreas Steiner.
+# Mixup Vision Transformer
 
 Note: This repository was forked and modified from
-[google-research/big_transfer](https://github.com/google-research/big_transfer).
+[google-research/vision_transformer](https://github.com/google-research/vision_transformer).
 
 ## Introduction
 
