@@ -70,6 +70,7 @@ def get_data(*,
              repeats,
              batch_size,
              mixup_alpha=0,
+             mixup_beta=0,
              shuffle_buffer=MAX_IN_MEMORY,
              tfds_data_dir=None,
              tfds_manual_dir=None,
@@ -148,7 +149,7 @@ def get_data(*,
 
 
   def _mixup(data):
-    beta_dist = tfp.distributions.Beta(mixup_alpha, mixup_alpha)
+    beta_dist = tfp.distributions.Beta(mixup_alpha, mixup_beta)
     beta = tf.cast(beta_dist.sample([]), tf.float32)
     data['image'] = (
         beta * data['image'] + (1 - beta) * tf.reverse(data['image'], axis=[0]))
