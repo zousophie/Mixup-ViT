@@ -69,8 +69,7 @@ def get_data(*,
              mode,
              repeats,
              batch_size,
-             mixup_alpha=0,
-             mixup_beta=0,
+             lamda=0,
              shuffle_buffer=MAX_IN_MEMORY,
              tfds_data_dir=None,
              tfds_manual_dir=None,
@@ -149,15 +148,16 @@ def get_data(*,
 
 
   def _mixup(data):
-    beta_dist = tfp.distributions.Beta(mixup_alpha, mixup_beta)
-    beta = tf.cast(beta_dist.sample([]), tf.float32)
+    #beta_dist = tfp.distributions.Beta(mixup_alpha, mixup_beta)
+    #beta = tf.cast(beta_dist.sample([]), tf.float32)
     data['image'] = (
         beta * data['image'] + (1 - beta) * tf.reverse(data['image'], axis=[0]))
     data['label'] = (
         beta * data['label'] + (1 - beta) * tf.reverse(data['label'], axis=[0]))
     return data
 
-  if mixup_alpha is not None and mixup_alpha > 0.0 and mode == 'train':
+  #if mixup_alpha is not None and mixup_alpha > 0.0 and mode == 'train':
+  if beta is not None and beta > 0.0 and mode == 'train':
     data = data.map(_mixup, tf.data.experimental.AUTOTUNE)
 
 
