@@ -146,6 +146,7 @@ def get_data(*,
   data = data.map(_pp, tf.data.experimental.AUTOTUNE)
   data = data.batch(batch_size, drop_remainder=True)
 
+  """
   def _mixup(data):
     beta_dist = tfp.distributions.Beta(mixup_alpha, mixup_alpha)
     beta = tf.cast(beta_dist.sample([]), tf.float32)
@@ -157,6 +158,8 @@ def get_data(*,
 
   if mixup_alpha is not None and mixup_alpha > 0.0 and mode == 'train':
     data = data.map(_mixup, tf.data.experimental.AUTOTUNE)
+  """
+
 
   # Shard data such that it can be distributed accross devices
   num_devices = jax.local_device_count()
